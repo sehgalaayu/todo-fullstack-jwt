@@ -67,5 +67,4 @@ todo-fullstack-with-auth/
 - **Styling:** Tailwind CSS is loaded via CDN. You can further customize the look by editing the EJS files.
 - **Animations:** Uses the Web Animations API for smooth hover effects. You can add more advanced animations with Anime.js or GSAP if desired.
 
-## License
-This project is open source and available under the [ISC License](LICENSE). 
+
