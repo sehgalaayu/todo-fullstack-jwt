@@ -24,8 +24,8 @@ A fullstack Todo web application built with Node.js, Express, MongoDB, EJS, Tail
 ### Installation
 1. **Clone the repository:**
    ```sh
-   git clone <your-repo-url>
-   cd todo-fullstack-with-auth
+   git clone https://github.com/sehgalaayu/todo-fullstack-jwt.git
+   cd todo-fullstack-jwt
    ```
 2. **Install dependencies:**
    ```sh
