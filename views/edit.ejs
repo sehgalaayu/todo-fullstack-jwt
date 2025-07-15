@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Task</title>
+    <link href="/tailwind.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Edit Task</h1>
+    <form action="/todos/<%= task._id %>/edit" method="POST">
+        <input type="text" name="description" value="<%= task.description %>" required>
+        <button type="submit">Save</button>
+    </form>
+    <a href="/todos">Back to list</a>
+</body>
+</html>

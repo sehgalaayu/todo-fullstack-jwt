@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-violet-600 min-h-screen flex flex-col items-center justify-start py-10">
+    <div class="w-full max-w-md bg-white/10 backdrop-blur-md rounded-xl shadow-2xl p-8">
+        <h1 class="text-3xl font-bold text-white mb-6 text-center tracking-wide">Your Futuristic Todo List 🚀</h1>
+        <form action="/tasks" method="post" class="flex gap-2 mb-6">
+            <input type="text" name="description" placeholder="Add your task" required class="flex-1 px-4 py-2 rounded-lg bg-white/80 text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-400 shadow-md">
+            <button type="submit" class="px-5 py-2 rounded-lg bg-gradient-to-r from-violet-500 to-purple-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform">Add</button>
+        </form>
+        <ul id="todo-list">
+            <% if (tasks && tasks.length > 0) { %>
+                <% tasks.forEach(task => { %>
+                    <li class="flex items-center justify-between bg-white/20 rounded-lg px-4 py-3 mb-3 shadow-md hover:bg-white/30 transition-colors motion-safe:animate-fadeIn" data-task-id="<%= task._id %>">
+                        <span class="text-lg text-white font-medium"><%= task.description %></span>
+                        <div class="flex gap-2">
+                            <form action="/todos/<%= task._id %>/delete" method="POST">
+                                <button type="submit" class="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-700 transition-colors">Delete</button>
+                            </form>
+                            <form action="/todos/<%= task._id %>/edit" method="get">
+                                <button type="submit" class="px-3 py-1 rounded bg-blue-500 text-white hover:bg-blue-700 transition-colors">Edit</button>
+                            </form>
+                        </div>
+                    </li>
+                <% }) %>
+            <% } else { %>
+                <li class="text-white text-center">No tasks yet!</li>
+            <% } %>
+        </ul>
+        <form action="/logout" method="POST" class="mt-6 flex justify-center">
+            <button type="submit" class="px-6 py-2 rounded-lg bg-gradient-to-r from-pink-500 to-violet-600 text-white font-bold shadow-lg hover:scale-105 transition-transform">Logout</button>
+        </form>
+    </div>
+    <footer class="w-full text-center text-white mt-10 opacity-80 text-sm absolute bottom-2 left-0">
+        Made with <span class="text-pink-400">❤️</span> by Aayu
+    </footer>
+    <!-- Framer Motion for Web CDN -->
+    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+    <script>
+      // Animate todo items on hover using Framer Motion for Web
+      document.querySelectorAll('#todo-list li').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+          item.animate([
+            { transform: 'scale(1)' },
+            { transform: 'scale(1.04) translateY(-2px)' }
+          ], { duration: 200, fill: 'forwards' });
+        });
+        item.addEventListener('mouseleave', () => {
+          item.animate([
+            { transform: 'scale(1.04) translateY(-2px)' },
+            { transform: 'scale(1)' }
+          ], { duration: 200, fill: 'forwards' });
+        });
+      });
+    </script>
+</body>
+</html>
