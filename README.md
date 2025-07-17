@@ -2,6 +2,9 @@
 
 A fullstack Todo web application built with Node.js, Express, MongoDB, EJS, Tailwind CSS, and JWT authentication. Users can sign up, log in, add, edit, and delete their own tasks. The UI is styled with Tailwind and features smooth animations.
 
+## Screenshots
+![Sign in Page](public/signin.jpg)
+
 ## Features
 - User registration and login with JWT authentication
 - Passwords securely hashed with bcrypt
